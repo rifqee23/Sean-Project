@@ -1,10 +1,13 @@
-import './App.css';
+import "./index.css";
+import MainLayout from "./features/layouts/MainLayout";
 
 const App = () => {
   return (
-    <div className="content">
-      <h1>Rsbuild with React</h1>
-      <p>Start building amazing things with Rsbuild.</p>
+    <div>
+      <MainLayout>
+        <h1>Hi</h1>
+        <p>Ini adalah halaman utamass</p>
+      </MainLayout>
     </div>
   );
 };
