@@ -6,10 +6,41 @@ import {
   FaFacebookSquare,
 } from "react-icons/fa";
 import Input from "./ui/Input";
+import { Link } from "react-router-dom";
 
 function Footer() {
+  const navItems = [
+    {
+      title: "Beranda",
+      link: "/",
+    },
+    {
+      title: "Terbaru",
+      link: "/terbaru",
+    },
+    {
+      title: "Hiburan",
+      link: "/hiburan",
+    },
+    {
+      title: "Gaya Hidup",
+      link: "/gayaHidup",
+    },
+    {
+      title: "Olahraga",
+      link: "/olahraga",
+    },
+    {
+      title: "Nasional",
+      link: "/nasional",
+    },
+    {
+      title: "Internasional",
+      link: "/internasional",
+    },
+  ];
   return (
-    <footer className="bg-color-secondary w-full text-white">
+    <footer className="bg-color-secondary w-full text-white h-auto md:fixed md:bottom-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-8 grid gap-8 md:grid-cols-3">
         {/* Logo & Sosmed */}
         <div className="flex flex-col items-center md:items-start gap-3">
@@ -19,9 +50,15 @@ function Footer() {
           </p>
           <p className="text-lg font-semibold">Ikuti Kami</p>
           <div className="flex gap-2">
-            <FaYoutubeSquare size={28} aria-label="YouTube" />
-            <FaInstagramSquare size={28} aria-label="Instagram" />
-            <FaFacebookSquare size={28} aria-label="Facebook" />
+            <a href="https://www.youtube.com/" target="_blank">
+              <FaYoutubeSquare size={28} aria-label="YouTube" />
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+              <FaInstagramSquare size={28} aria-label="Instagram" />
+            </a>
+            <a href="https://www.facebook.com/" target="_blank">
+              <FaFacebookSquare size={28} aria-label="Facebook" />
+            </a>
           </div>
         </div>
 
@@ -30,40 +67,44 @@ function Footer() {
           <div className="text-left place-self-end md:place-self-start">
             <h2 className="font-semibold mb-2">Telusuri</h2>
             <ul className="space-y-1">
-              <li>
-                <a href="">Beranda</a>
-              </li>
-              <li>
-                <a href="">Kesehatan</a>
-              </li>
-              <li>
-                <a href="">Otomotif</a>
-              </li>
-              <li>
-                <a href="">Politik</a>
-              </li>
-              <li>
-                <a href="">Olahraga</a>
-              </li>
-              <li>
-                <a href="">Nasional</a>
-              </li>
-              <li>
-                <a href="">Internasional</a>
-              </li>
+              {navItems.map((item, index) => (
+                <li key={index}>
+                  <Link
+                    className="hover:underline hover:text-color-primary"
+                    to={item.link}
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="text-left">
             <h2 className="font-semibold mb-2">Bantuan</h2>
             <ul className="space-y-1">
               <li>
-                <a href="">Kontak Kami</a>
+                <a
+                  href="#"
+                  className="hover:underline hover:text-color-primary"
+                >
+                  Kontak Kami
+                </a>
               </li>
               <li>
-                <a href="">Laporan Pembajakan</a>
+                <a
+                  href="#"
+                  className="hover:underline hover:text-color-primary"
+                >
+                  Laporan Pembajakan
+                </a>
               </li>
               <li>
-                <a href="">Kebijakan</a>
+                <a
+                  href="#"
+                  className="hover:underline hover:text-color-primary"
+                >
+                  Kebijakan
+                </a>
               </li>
             </ul>
           </div>

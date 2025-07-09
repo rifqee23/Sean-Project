@@ -1,0 +1,87 @@
+import React from "react";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Comment from "../../components/Comment";
+
+function DetailPage() {
+  const { state } = useLocation();
+
+  const item = state?.item;
+  const label = state?.label;
+  const endpoint = state?.endpoint;
+
+  if (!item) {
+    return (
+      <div className="p-4">
+        <p>Berita tidak ditemukan.</p>
+      </div>
+    );
+  }
+
+  const formattedDate = new Date(item.pubDate).toLocaleDateString("id-ID", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  return (
+    <div className="px-4 md:px-0">
+      <div className="max-w-7xl mx-auto py-6">
+        {/* Breadcrumb */}
+        <div className="breadcrumbs text-sm mb-4">
+          <ul className="flex space-x-2">
+            <li>
+              <Link to="/" className="text-gray-500 hover:underline">
+                Home
+              </Link>
+            </li>
+            <li className="text-gray-500">
+              <Link to={endpoint}>{label}</Link>
+            </li>
+            <li className="text-color-primary">Detail</li>
+          </ul>
+        </div>
+
+        {/* Title */}
+        <h1 className="text-2xl md:text-5xl font-bold leading-snug mb-4">
+          {item.title}
+        </h1>
+
+        {/* Metadata */}
+        <div className="mt-2 flex flex-wrap gap-4 text-sm font-medium text-slate-600">
+          <span className="text-blue-500">{label}</span>
+          <span>{formattedDate}</span>
+        </div>
+
+        {/* Gambar */}
+        <div className="mt-4">
+          <img src={item.thumbnail} alt={item.title} className="rounded-lg" />
+        </div>
+
+        <p className="text-justify text-md leading-relaxed text-slate-700">
+          {item.description}
+        </p>
+
+        {/* Konten */}
+        <div className="mt-4">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+            iste quasi nulla iusto omnis! Quia veritatis porro enim dignissimos
+            vero sit a accusantium est dolorem repellat nihil incidunt nemo eius
+            dolor ducimus nisi, iste dicta amet ipsam...
+          </p>
+          <p>
+            Ut dolor officia earum sunt obcaecati sint accusamus quisquam aut,
+            at numquam laudantium tempora modi sequi amet illum ratione non
+            voluptatem? Officiis quibusdam nemo reprehenderit laudantium
+            voluptates, animi obcaecati voluptatum a earum consequatur iste...
+          </p>
+        </div>
+
+        <Comment />
+      </div>
+    </div>
+  );
+}
+
+export default DetailPage;
