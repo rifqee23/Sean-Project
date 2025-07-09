@@ -1,12 +1,10 @@
 import { create } from "zustand";
-import { fetchNews } from "../api/homeApi"; // pastikan ini bisa fetch endpoint dinamis
+import { fetchNews } from "../api/homeApi";
 
 const useHomeStore = create((set, get) => ({
-  // Berita Terbaru
   latestNews: [],
   labelLatest: "",
 
-  // Paginated Berita
   paginatedNews: [],
   labelPaginated: "",
   currentPage: 1,
