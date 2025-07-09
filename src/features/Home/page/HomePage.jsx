@@ -1,13 +1,13 @@
-import React from "react";
-import Banner from "../components/Banner";
 import Popular from "../components/Popular";
 import Carrousel from "../components/Carrousel";
+import Recommended from "../components/Recommended";
 
 function HomePage() {
   return (
-    <div>
+    <div className="md:max-w-7xl md:mx-auto">
       <Carrousel />
       <Popular />
+      <Recommended />
     </div>
   );
 }

@@ -7,6 +7,7 @@ function Hero({
   img = "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
   alt = "Shoes",
   date = "2025-07-07T14:02:00.000Z",
+  onClick = () => {},
 }) {
   return (
     <div className="hero">
@@ -32,10 +33,15 @@ function Hero({
             </span>
           </p>
 
-          <p className="text-color-primary font-semibold flex items-center gap-x-2 mt-2">
-            <a href="">Baca Selengkapnya</a>
-            <BsArrowUpRight />
-          </p>
+          <button
+            onClick={onClick}
+            className="text-color-primary font-semibold  mt-2 cursor-pointer"
+          >
+            <p className="flex items-center hover:underline">
+              Baca Selengkapnya
+              <BsArrowUpRight />
+            </p>
+          </button>
         </div>
       </div>
     </div>

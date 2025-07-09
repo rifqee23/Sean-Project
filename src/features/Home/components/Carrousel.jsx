@@ -15,13 +15,14 @@ import { FaAngleLeft } from "react-icons/fa6";
 function Carrousel() {
   const swiperRef = useRef(null);
   const [current, setCurrent] = useState(1);
-  const { latestNews, getHomeData, loading } = useHomeStore();
+  const { latestNews, getAllNews, loading, labelLatest } = useHomeStore();
 
   const limitedNews = latestNews.slice(0, 5);
   const total = limitedNews.length;
+  const route = "/terbaru";
 
   useEffect(() => {
-    getHomeData();
+    getAllNews(route, "Terbaru");
   }, []);
 
   const handleSlideChange = (swiper) => {
@@ -36,7 +37,12 @@ function Carrousel() {
     if (swiperRef.current) swiperRef.current?.slideNext();
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex items-center justify-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
 
   return (
     <div>
@@ -54,7 +60,7 @@ function Carrousel() {
         {limitedNews.map((item, index) => {
           return (
             <SwiperSlide key={index}>
-              <Banner data={[item]} />
+              <Banner data={[item]} label={labelLatest} endpoint={route} />
             </SwiperSlide>
           );
         })}
@@ -67,7 +73,7 @@ function Carrousel() {
           </button>
         )}
         <p className="text-gray-600">
-          {current} dari {total}
+          {total > 0 ? `${current} dari ${total}` : "0 dari 0"}
         </p>
         {current < total && (
           <button onClick={goNext} className="ml-2">
