@@ -8,8 +8,17 @@ import { Link, useLocation } from "react-router-dom";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [darkmode, setDarkmode] = useState(false);
   const location = useLocation();
   const pathLocation = location.pathname;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    setDarkmode(mq.matches);
+    const handleChange = (e) => setDarkmode(e.matches);
+    mq.addEventListener("change", handleChange);
+    return () => window.removeEventListener("change", handleChange);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -61,11 +70,11 @@ function Header() {
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           {/* Logo */}
           <Link to="/">
-            {isScrolled ? (
-              <img src={logo2} alt="Logo" className="w-32" />
-            ) : (
-              <img src={logo} alt="Logo" className="w-32" />
-            )}
+            <img
+              src={darkmode || isScrolled ? logo2 : logo}
+              alt="Logo"
+              className="w-32"
+            />
           </Link>
 
           {/* Desktop Menu */}
