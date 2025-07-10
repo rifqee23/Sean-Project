@@ -9,9 +9,8 @@ export default defineConfig({
       addPlugins("@tailwindcss/postcss");
     },
   },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
+  html: {
+    title: "BeritaKini",
+    favicon: path.resolve(__dirname, "./src/assets/vector.png"),
   },
 });

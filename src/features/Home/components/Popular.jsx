@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Card from "../../components/ui/Card";
+import CardSide from "../../components/ui/CardSide";
 import useHomeStore from "../stores/homeStores";
 import { useNavigate } from "react-router-dom";
 import { slugify } from "../../../utils/slugify";
@@ -35,26 +36,37 @@ function Popular() {
           return (
             <div
               key={item.link}
-              className="relative py-2 cursor-pointer"
+              className="cursor-pointer group"
               onClick={() =>
                 navigate(`/detail/${slug}`, {
                   state: { item, label: labelLatest, endpoint: route },
                 })
               }
             >
-              <span className="hidden bg-neutral text-white rounded-full absolute top-0 left-1 w-6 h-6 z-50 md:flex items-center justify-center">
-                {index + 1}
-              </span>
+              <div className="h-full md:hidden">
+                <Card
+                  title={item.title}
+                  img={item.thumbnail}
+                  date={formatedDate[index]}
+                  showLabel={true}
+                  label={labelLatest}
+                >
+                  {item.description}
+                </Card>
+              </div>
 
-              <Card
-                title={item.title}
-                img={item.thumbnail}
-                date={formatedDate[index]}
-                showLabel={true}
-                label={labelLatest}
-              >
-                {item.description}
-              </Card>
+              <div className="hidden h-full md:block relative">
+                <CardSide
+                  title={item.title}
+                  img={item.thumbnail}
+                  date={formatedDate[index]}
+                  showLabel={true}
+                  label={labelLatest}
+                  index={index + 1}
+                >
+                  {item.description}
+                </CardSide>
+              </div>
             </div>
           );
         })}

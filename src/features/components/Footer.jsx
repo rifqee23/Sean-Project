@@ -6,9 +6,11 @@ import {
   FaFacebookSquare,
 } from "react-icons/fa";
 import Input from "./ui/Input";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Footer() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
   const navItems = [
     {
       title: "Beranda",
@@ -40,7 +42,11 @@ function Footer() {
     },
   ];
   return (
-    <footer className="bg-color-secondary w-full text-white h-auto md:fixed md:bottom-0 z-50">
+    <footer
+      className={`bg-color-secondary w-full text-white h-auto  ${
+        isHome ? "md:fixed md:bottom-0 z-50" : ""
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 py-8 grid gap-8 md:grid-cols-3">
         {/* Logo & Sosmed */}
         <div className="flex flex-col items-center md:items-start gap-3">

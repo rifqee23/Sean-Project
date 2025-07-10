@@ -9,6 +9,7 @@ import GayaHidupPage from "./features/GayaHidup/page/GayaHidupPage";
 import OlahragaPage from "./features/Olahraga/page/OlahragaPage";
 import NasionalPage from "./features/Nasional/page/NasionalPage";
 import InternasionalPage from "./features/Internasional/page/InternasionalPage";
+import NotFound from "./features/components/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         element: <DetailPage />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

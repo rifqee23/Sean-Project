@@ -1,7 +1,9 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Comment from "../../components/Comment";
+import Comment from "../components/Comment";
+import Popular from "../components/Popular";
+import Relate from "../components/Relate";
 
 function DetailPage() {
   const { state } = useLocation();
@@ -42,43 +44,62 @@ function DetailPage() {
           </ul>
         </div>
 
-        {/* Title */}
-        <h1 className="text-2xl md:text-5xl font-bold leading-snug mb-4">
-          {item.title}
-        </h1>
+        <div className="md:flex md:gap-4">
+          <div className="md:w-9/12">
+            {/* Title */}
+            <h1 className="text-2xl md:text-5xl font-bold leading-snug mb-4">
+              {item.title}
+            </h1>
 
-        {/* Metadata */}
-        <div className="mt-2 flex flex-wrap gap-4 text-sm font-medium text-slate-600">
-          <span className="text-blue-500">{label}</span>
-          <span>{formattedDate}</span>
+            {/* Metadata */}
+            <div className="mt-2 flex flex-wrap gap-4 text-sm font-medium text-slate-600">
+              <span className="text-blue-500">{label}</span>
+              <span>{formattedDate}</span>
+            </div>
+
+            {/* Gambar */}
+            <div className="mt-4">
+              <img
+                src={item.thumbnail}
+                alt={item.title}
+                className="rounded-lg"
+              />
+            </div>
+
+            <p className="text-justify text-md leading-relaxed text-slate-700">
+              {item.description}
+            </p>
+
+            {/* Konten */}
+            <div className="mt-4">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Laudantium iste quasi nulla iusto omnis! Quia veritatis porro
+                enim dignissimos vero sit a accusantium est dolorem repellat
+                nihil incidunt nemo eius dolor ducimus nisi, iste dicta amet
+                ipsam...
+              </p>
+              <p>
+                Ut dolor officia earum sunt obcaecati sint accusamus quisquam
+                aut, at numquam laudantium tempora modi sequi amet illum ratione
+                non voluptatem? Officiis quibusdam nemo reprehenderit laudantium
+                voluptates, animi obcaecati voluptatum a earum consequatur
+                iste...
+              </p>
+            </div>
+
+            <div className="mt-6">
+              <Comment />
+            </div>
+          </div>
+          <div className="mt-6 md:mt-0">
+            <Popular />
+          </div>
         </div>
 
-        {/* Gambar */}
-        <div className="mt-4">
-          <img src={item.thumbnail} alt={item.title} className="rounded-lg" />
+        <div className="mt-8 md:w-8/12">
+          <Relate linkCategory={endpoint} label={label} />
         </div>
-
-        <p className="text-justify text-md leading-relaxed text-slate-700">
-          {item.description}
-        </p>
-
-        {/* Konten */}
-        <div className="mt-4">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-            iste quasi nulla iusto omnis! Quia veritatis porro enim dignissimos
-            vero sit a accusantium est dolorem repellat nihil incidunt nemo eius
-            dolor ducimus nisi, iste dicta amet ipsam...
-          </p>
-          <p>
-            Ut dolor officia earum sunt obcaecati sint accusamus quisquam aut,
-            at numquam laudantium tempora modi sequi amet illum ratione non
-            voluptatem? Officiis quibusdam nemo reprehenderit laudantium
-            voluptates, animi obcaecati voluptatum a earum consequatur iste...
-          </p>
-        </div>
-
-        <Comment />
       </div>
     </div>
   );

@@ -21,20 +21,24 @@ function Card({
         <img src={img} alt={alt} />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{title}</h2>
+        <h2 className="card-title group-hover:underline transition-all duration-200">
+          {title}
+        </h2>
         <p>{children}</p>
 
-        <div>
-          {showLabel && (
-            <p className="text-color-primary font-semibold flex items-center gap-x-2">
-              <span>{label}</span>
-            </p>
-          )}
+        <div className="w-full">
+          <div className="md:flex md:items-center md:justify-between">
+            {showLabel && (
+              <p className="text-color-primary font-semibold flex items-center gap-x-2">
+                <span>{label}</span>
+              </p>
+            )}
 
-          <p className="flex gap-2 items-center">
-            <BsCalendarEvent color="gray" />
-            <span className="text-sm font-medium">{date}</span>
-          </p>
+            <p className="flex gap-2 items-center">
+              <BsCalendarEvent color="gray" />
+              <span className="text-sm font-medium text-gray-600">{date}</span>
+            </p>
+          </div>
 
           {showReadMore && (
             <p className="text-color-primary font-semibold flex items-center gap-x-2">
