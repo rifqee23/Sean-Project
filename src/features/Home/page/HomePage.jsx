@@ -1,6 +1,7 @@
 import Popular from "../components/Popular";
 import Carrousel from "../components/Carrousel";
 import Recommended from "../components/Recommended";
+import BannerAds from "../components/BannerAds";
 
 function HomePage() {
   return (
@@ -8,6 +9,7 @@ function HomePage() {
       <Carrousel />
       <Popular />
       <Recommended />
+      <BannerAds />
     </div>
   );
 }
