@@ -94,7 +94,7 @@ function Header() {
                     : `${
                         isScrolled
                           ? "hover:text-slate-200"
-                          : "hover:text-gray-500"
+                          : "text-gray-400 hover:text-gray-500"
                       }`
                 }`}
               >

@@ -24,7 +24,7 @@ function Hero({
 
           <p className="flex gap-2 items-center">
             <BsCalendarEvent color="gray" />
-            <span className="text-sm font-medium">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
               {new Date(date).toLocaleDateString("id-ID", {
                 day: "numeric",
                 month: "long",

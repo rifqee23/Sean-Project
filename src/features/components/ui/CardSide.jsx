@@ -33,7 +33,7 @@ function CardSide({
           </h2>
           <p>{children}</p>
         </div>
-        <div className="flex flex-wrap items-center gap-3 text-xs text-gray-600">
+        <div className="flex flex-wrap items-center gap-3 text-xs text-gray-600 dark:text-gray-300">
           {<span className="text-color-primary font-medium">{label}</span>}
           <span className="flex items-center gap-1">
             <BsCalendarEvent className="text-gray-400" size={12} />

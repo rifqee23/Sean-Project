@@ -38,15 +38,20 @@ function NewList({
   );
 
   useEffect(() => {
-    getNewsPagination(endpoint, category);
-  }, [getNewsPagination]);
+    const fetchAndSetPage = async () => {
+      await getNewsPagination(endpoint, category);
+      setPage(pageParam);
 
-  useEffect(() => {
-    setPage(pageParam);
-    if (hasInteracted.current) {
-      listRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [pageParam, setPage]);
+      if (hasInteracted.current) {
+        listRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    };
+
+    fetchAndSetPage();
+  }, [endpoint, category, pageParam]);
 
   const handlePageChange = ({ selected }) => {
     const page = selected + 1;
@@ -144,7 +149,7 @@ function NewList({
               forcePage={pageParam - 1}
               renderOnZeroPageCount={null}
               containerClassName="flex gap-2 flex-wrap justify-center mt-6"
-              pageClassName="border px-3 py-1 text-sm rounded transition-transform hover:-translate-y-1 cursor-pointer"
+              pageClassName="border px-3 py-1 text-sm rounded transition-transform hover:-translate-y-1 cursor-pointer select-none"
               activeClassName="bg-blue-600 text-white font-bold px-3 py-1 rounded hover:bg-blue-600 transition"
               previousClassName={
                 pageParam > 1

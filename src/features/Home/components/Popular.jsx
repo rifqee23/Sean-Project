@@ -9,7 +9,9 @@ import SubTitle from "../../components/SubTitle";
 function Popular() {
   const navigate = useNavigate();
   const { latestNews, getAllNews, loading, labelLatest } = useHomeStore();
-  const limitedNews = latestNews.slice(0, 3);
+  const shuffledNews = [...latestNews].sort(() => Math.random() - 0.5);
+
+  const limitedNews = shuffledNews.slice(0, 3);
   const route = "/terbaru";
 
   useEffect(() => {

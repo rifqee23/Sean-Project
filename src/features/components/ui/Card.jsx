@@ -36,7 +36,9 @@ function Card({
 
             <p className="flex gap-2 items-center">
               <BsCalendarEvent color="gray" />
-              <span className="text-sm font-medium text-gray-600">{date}</span>
+              <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                {date}
+              </span>
             </p>
           </div>
 

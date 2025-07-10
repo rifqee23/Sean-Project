@@ -28,7 +28,7 @@ function Input() {
             encType="text/plain"
           >
             <input
-              className="text-neutral"
+              className="text-neutral dark:text-gray-400"
               type="email"
               placeholder="mail@site.com"
               required

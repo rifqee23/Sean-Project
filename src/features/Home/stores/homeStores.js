@@ -49,12 +49,10 @@ const useHomeStore = create((set, get) => ({
       const totalPages = Math.ceil(allPosts.length / get().itemsPerPage);
 
       set({
-        labelPaginated: label,
-        currentPage: 1,
-        totalPages,
-        paginatedNews: allPosts.slice(0, get().itemsPerPage),
-        totalNews: allPosts.length,
         latestNews: allPosts,
+        totalPages,
+        totalNews: allPosts.length,
+        labelPaginated: label,
       });
     } catch (error) {
       console.error("Error fetching news:", error);
