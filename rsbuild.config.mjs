@@ -11,6 +11,6 @@ export default defineConfig({
   },
   html: {
     title: "BeritaKini",
-    favicon: path.resolve(__dirname, "./src/assets/vector.png"),
+    favicon: path.resolve(__dirname, "./src/assets/Vector.png"),
   },
 });

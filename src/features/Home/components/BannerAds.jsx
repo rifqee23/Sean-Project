@@ -1,5 +1,5 @@
 import React from "react";
-import imgRight from "../../../assets/right.png";
+import imgRight from "../../../assets/Right.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
