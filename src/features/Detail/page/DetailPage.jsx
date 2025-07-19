@@ -1,24 +1,32 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Comment from "../components/Comment";
 import Popular from "../components/Popular";
 import Relate from "../components/Relate";
+import useHomeStore from "../../Home/stores/homeStores";
+import { slugify } from "../../../utils/slugify";
 
 function DetailPage() {
   const { state } = useLocation();
+  const { slug } = useParams();
+  const { latestNews, getAllNews, labelLatest } = useHomeStore();
 
-  const item = state?.item;
-  const label = state?.label;
-  const endpoint = state?.endpoint;
+  let item = state?.item;
+  let label = state?.label || labelLatest;
+  let endpoint = state?.endpoint;
 
-  if (!item) {
-    return (
-      <div className="p-4">
-        <p>Berita tidak ditemukan.</p>
-      </div>
-    );
+  useEffect(() => {
+    if (!item && latestNews.length === 0) {
+      getAllNews("/terbaru", "Terbaru");
+    }
+  }, []);
+
+  if (!item && latestNews.length > 0) {
+    item = latestNews.find((news) => slugify(news.title) === slug);
   }
+
+  if (!item) return <p>Berita tidak ditemukan.</p>;
 
   const formattedDate = new Date(item.pubDate).toLocaleDateString("id-ID", {
     day: "numeric",
